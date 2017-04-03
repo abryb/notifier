@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+    
+    	<service id="staccato_notifier.notifier_manager.configurator" class="Staccato\Bundle\NotifierBundle\Configurator\NotifierManagerConfigurator" public="false">
+    		<argument type="service" id="service_container" />
+    		<argument>%staccato_notifier.config%</argument>
+    	</service>
+    	
+        <service id="staccato_notifier.notifier_manager.default" class="Staccato\Component\Notifier\NotifierManager" public="false" lazy="true">
+        	<configurator service="staccato_notifier.notifier_manager.configurator" method="configure" />
+        </service>
+        
+        <service id="staccato_notifier.transport.mail.default" class="Staccato\Component\Notifier\Message\Transport\SwiftmailerTransport">
+            <argument type="service" id="mailer" />
+        </service>
+        
+    </services>
+</container>

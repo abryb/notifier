@@ -11,6 +11,6 @@
 
 namespace Staccato\Component\Notifier\Message\Exception;
 
-class InvalidMessageTypeException extends \RuntimeException
+class InvalidMessageTemplatingException extends \RuntimeException
 {
 }

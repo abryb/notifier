@@ -44,20 +44,84 @@ interface MessageInterface
     public function getTo();
 
     /**
+     * Set message subject.
+     *
+     * @param string $subject
+     *
+     * @return MessageInterface self
+     */
+    public function setSubject(string $subject): MessageInterface;
+
+    /**
+     * Get message subject.
+     *
+     * @return string
+     */
+    public function getSubject(): string;
+
+    /**
      * Set message content.
      *
      * @param string $content
      *
      * @return MessageInterface self
      */
-    public function setContent($content): MessageInterface;
+    public function setContent(string $content, array $contentVariables = null): MessageInterface;
 
     /**
      * Get message contents.
      *
      * @return string
      */
-    public function getContent();
+    public function getContent(): string;
+
+    /**
+     * Set content variables.
+     *
+     * @param array $contentVariables
+     *
+     * @return MessageInterface self
+     */
+    public function setContentVariables(array $contentVariables): MessageInterface;
+
+    /**
+     * Get content variables.
+     *
+     * @return array
+     */
+    public function getContentVariables(): array;
+
+    /**
+     * Set message template.
+     *
+     * @param string $template template path
+     *
+     * @return MessageInterface self
+     */
+    public function setTemplate(string $template, array $templateVariables = null): MessageInterface;
+
+    /**
+     * Get message template.
+     *
+     * @return string
+     */
+    public function getTemplate(): string;
+
+    /**
+     * Set template variables.
+     *
+     * @param array $templateVariables
+     *
+     * @return MessageInterface self
+     */
+    public function setTemplateVariables(array $templateVariables): MessageInterface;
+
+    /**
+     * Get template variables.
+     *
+     * @return array
+     */
+    public function getTemplateVariables(): array;
 
     /**
      * Set message option.
@@ -70,12 +134,19 @@ interface MessageInterface
     public function setOption(string $name, $value): MessageInterface;
 
     /**
-     * {inheritdoc}.
+     * Set message option.
+     *
+     * @param string $name
+     * @param mixed  $defaultValue
+     *
+     * @return mixed
      */
     public function getOption(string $name, $defaultValue = null);
 
     /**
-     * {inheritdoc}.
+     * Get all options.
+     *
+     * @return array
      */
     public function getOptions(): array;
 
@@ -97,4 +168,12 @@ interface MessageInterface
      * Send this message.
      */
     public function send();
+
+    /**
+     * Compile template and message
+     * content into one text.
+     *
+     * @return string
+     */
+    public function compile();
 }

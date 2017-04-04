@@ -19,5 +19,9 @@
             <argument type="service" id="mailer" />
         </service>
         
+        <service id="staccato_notifier.templating.default" class="Staccato\Bundle\NotifierBundle\Templating\Templating">
+            <argument type="service" id="templating" />
+        </service>
+        
     </services>
 </container>

@@ -46,6 +46,7 @@ class NotifierManagerConfigurator
                 $messageType->setName($typeName);
                 $messageType->setClass($type['class']);
                 $messageType->setTransport($this->container->get($type['transport']));
+                $messageType->setTemplating($this->container->get($type['templating']));
                 $messageType->setDefaultValues($type['default_values']);
 
                 $notifierManager->addMessageType($messageType);

@@ -11,6 +11,8 @@
 
 namespace Staccato\Component\Notifier\Message;
 
+use Staccato\Component\Notifier\Message\Templating\TemplatingInterface;
+
 class MessageType
 {
     /**
@@ -19,14 +21,19 @@ class MessageType
     protected $name;
 
     /**
-     * @var MessageTransportInterface
-     */
-    protected $transport;
-
-    /**
      * @var string
      */
     protected $class = Message::class;
+
+    /**
+     * @var TemplatingInterface|null
+     */
+    protected $templating;
+
+    /**
+     * @var MessageTransportInterface|null
+     */
+    protected $transport;
 
     /**
      * Get name of type.
@@ -127,6 +134,28 @@ class MessageType
         }
 
         return $message;
+    }
+
+    /**
+     * Get message templating.
+     *
+     * return TemplatingInterface|null
+     */
+    public function getTemplating()
+    {
+        return $this->templating;
+    }
+
+    /**
+     * Set message templating.
+     *
+     * return MessageType self
+     */
+    public function setTemplating(TemplatingInterface $templating): MessageType
+    {
+        $this->templating = $templating;
+
+        return $this;
     }
 
     /**

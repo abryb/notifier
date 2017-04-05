@@ -144,6 +144,15 @@ interface MessageInterface
     public function getOption(string $name, $defaultValue = null);
 
     /**
+     * Has message option.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasOption(string $name): bool;
+
+    /**
      * Get all options.
      *
      * @return array

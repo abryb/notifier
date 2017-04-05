@@ -11,7 +11,7 @@
 
 namespace Staccato\Bundle\NotifierBundle\DependencyInjection;
 
-use Staccato\Component\Notifier\Message\Message;
+use Staccato\Component\Notifier\Message\MessageMail;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -60,7 +60,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('message_types')
                     ->prototype('array')
                          ->children()
-                             ->scalarNode('class')->defaultValue(Message::class)->end()
+                             ->scalarNode('class')->defaultValue(MessageMail::class)->end()
                              ->scalarNode('templating')
                                  ->cannotBeEmpty()
                                  ->defaultValue('staccato_notifier.templating.default')

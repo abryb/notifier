@@ -219,6 +219,14 @@ class Message implements MessageInterface
     /**
      * {@inheritdoc}
      */
+    public function hasOption(string $name): bool
+    {
+        return isset($this->options[$name]) ? true : false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getOptions(): array
     {
         return $this->options;

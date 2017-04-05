@@ -12,9 +12,8 @@
 namespace Staccato\Component\Notifier\Message\Transport;
 
 use Staccato\Component\Notifier\Message\MessageInterface;
-use Staccato\Component\Notifier\Message\MessageTransportInterface;
 
-class SwiftmailerTransport implements MessageTransportInterface
+class SwiftmailerTransport implements TransportInterface
 {
     /**
      * @var \Swift_Mailer
@@ -29,7 +28,7 @@ class SwiftmailerTransport implements MessageTransportInterface
     /**
      * {@inheritdoc}
      */
-    public function send(MessageInterface $message)
+    public function send(MessageInterface $message): bool
     {
         $message = \Swift_Message::newInstance()
             ->setFrom($message->getFrom())
@@ -40,6 +39,6 @@ class SwiftmailerTransport implements MessageTransportInterface
 
         $status = $this->swiftmailer->send($message);
 
-        return $status;
+        return $status > 0 ? true : false;
     }
 }

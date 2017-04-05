@@ -12,6 +12,7 @@
 namespace Staccato\Component\Notifier\Message;
 
 use Staccato\Component\Notifier\Message\Templating\TemplatingInterface;
+use Staccato\Component\Notifier\Message\Transport\TransportInterface;
 
 class MessageType
 {
@@ -31,7 +32,7 @@ class MessageType
     protected $templating;
 
     /**
-     * @var MessageTransportInterface|null
+     * @var TransportInterface|null
      */
     protected $transport;
 
@@ -161,7 +162,7 @@ class MessageType
     /**
      * Get message transport.
      *
-     * return MessageTransportInterface|null
+     * return TransportInterface|null
      */
     public function getTransport()
     {
@@ -173,7 +174,7 @@ class MessageType
      *
      * return MessageType self
      */
-    public function setTransport(MessageTransportInterface $transport): MessageType
+    public function setTransport(TransportInterface $transport): MessageType
     {
         $this->transport = $transport;
 

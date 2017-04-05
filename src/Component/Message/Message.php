@@ -15,6 +15,7 @@ use Staccato\Component\Notifier\Message\Exception\InvalidMessageTemplatingExcept
 use Staccato\Component\Notifier\Message\Exception\InvalidMessageTransportException;
 use Staccato\Component\Notifier\Message\Exception\InvalidMessageTypeException;
 use Staccato\Component\Notifier\Message\Templating\TemplatingInterface;
+use Staccato\Component\Notifier\Message\Transport\TransportInterface;
 
 class Message implements MessageInterface
 {
@@ -251,12 +252,12 @@ class Message implements MessageInterface
         if ($messageType instanceof MessageType) {
             $transport = $messageType->getTransport();
 
-            if ($transport instanceof MessageTransportInterface) {
+            if ($transport instanceof TransportInterface) {
                 return $transport->send($this);
             }
 
             throw new InvalidMessageTransportException(sprintf(
-                'Message transport must be instance of `%s`.', MessageTransportInterface::class
+                'Message transport must be instance of `%s`.', TransportInterface::class
             ));
         }
 

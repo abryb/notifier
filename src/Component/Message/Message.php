@@ -195,7 +195,7 @@ class Message implements MessageInterface
      */
     public function getTemplateVariables(): array
     {
-        return $this->contentVariables;
+        return $this->templateVariables;
     }
 
     /**

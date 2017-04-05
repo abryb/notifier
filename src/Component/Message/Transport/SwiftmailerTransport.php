@@ -34,7 +34,7 @@ class SwiftmailerTransport implements TransportInterface
             ->setFrom($message->getFrom())
             ->setTo($message->getTo())
             ->setSubject($message->getSubject())
-            ->setBody($message->getContent(), 'text/html')
+            ->setBody($message->compile(), 'text/html')
             ->setCharset('utf-8');
 
         $status = $this->swiftmailer->send($message);
